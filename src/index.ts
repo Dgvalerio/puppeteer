@@ -1,3 +1,10 @@
-const sum = (number1: number, number2: number): number => number1 + number2;
+import puppeteer from 'puppeteer';
 
-console.log({ sum: sum(7, 5) });
+(async () => {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+  await page.goto('https://luby-timesheet.azurewebsites.net/');
+  await page.screenshot({ path: 'example.png' });
+
+  await browser.close();
+})();
